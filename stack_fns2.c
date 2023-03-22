@@ -80,3 +80,22 @@ void mul(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = value;
 	pop(stack, line_number);
 }
+
+/**
+ * mod - computes rest of the division of second top element by the top element
+ * @stack: ptr to top element
+ * @line_number: current file position
+ */
+void mod(stack_t **stack, unsigned int line_number)
+{
+	int value;
+
+	if (!(*stack) || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	value = ((*stack)->next->n) % ((*stack)->n);
+	(*stack)->next->n = value;
+	pop(stack, line_number);
+}
