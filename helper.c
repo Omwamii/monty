@@ -21,6 +21,7 @@ void (*check_handler(char *op))(stack_t **stack, unsigned int line_number)
 		{"nop", &nop},
 		{"sub", &sub},
 		{"div", &divide},
+		{"mul", &mul},
 		{NULL, NULL}
 	};
 

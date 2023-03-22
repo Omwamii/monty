@@ -9,7 +9,7 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	int value;
 
-	if ((*stack)->next == NULL)
+	if (!(*stack) || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -28,7 +28,7 @@ void sub(stack_t **stack, unsigned int line_number)
 {
 	int value;
 
-	if ((*stack)->next == NULL)
+	if (!(*stack) || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L<%u>: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -47,7 +47,7 @@ void divide(stack_t **stack, unsigned int line_number)
 {
 	int value;
 
-	if ((*stack)->next == NULL)
+	if ((*stack)->next == NULL || !(*stack))
 	{
 		fprintf(stderr, "L<%u>: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -58,6 +58,25 @@ void divide(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	value = ((*stack)->next->n) / ((*stack)->n);
+	(*stack)->next->n = value;
+	pop(stack, line_number);
+}
+
+/**
+ * mul -  multiply second top element with the top element of the stack
+ * @stack: ptr to top element
+ * @line_number: current file postion
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int value;
+
+	if (!(*stack) || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	value = ((*stack)->next->n) * ((*stack)->n);
 	(*stack)->next->n = value;
 	pop(stack, line_number);
 }
