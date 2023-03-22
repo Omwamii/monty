@@ -71,3 +71,21 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+ * pop - removes top element of the stack
+ * @stack: pointer to top of stack
+ * @line_number: current position at bytecode file
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	free(tmp);
+}
