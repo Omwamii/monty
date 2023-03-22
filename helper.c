@@ -20,6 +20,7 @@ void (*check_handler(char *op))(stack_t **stack, unsigned int line_number)
 		{"add", &add},
 		{"nop", &nop},
 		{"sub", &sub},
+		{"div", &divide},
 		{NULL, NULL}
 	};
 
