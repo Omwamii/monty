@@ -89,3 +89,25 @@ void pop(stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(tmp);
 }
+
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: ptr to top of stack
+ * @line_number: current position at bytecode file
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *swap;
+
+	if ((*stack)->next == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	swap = (*stack)->next; /* second element */
+	(*stack)->prev = swap;
+	(*stack)->next = swap->next;
+	swap->next = *stack;
+	swap->prev = NULL;
+	*stack = swap;
+}
