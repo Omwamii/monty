@@ -18,6 +18,7 @@ void (*check_handler(char *op))(stack_t **stack, unsigned int line_number)
 		{"pop", &pop},
 		{"swap", &swap},
 		{"add", &add},
+		{"nop", &nop},
 		{NULL, NULL}
 	};
 
@@ -49,4 +50,14 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number)
 	}
 
 	f(stack, line_number); /* call handler fn */
+}
+
+/**
+ * nop - implement opcode that does nothing
+ * @stack: ptr to start of stack
+ * @line_number: current file position
+ */
+void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	return;
 }
