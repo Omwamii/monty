@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		opcode = strtok(buffer, " \n");
-		if (!opcode || *opcode == '#')
+		if (!opcode || *opcode == '#') /* comments & blanks */
 			continue;
 		else
 			execute_opcode(opcode, &stack, line_number);
