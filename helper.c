@@ -2,7 +2,7 @@
 
 /**
  * check_handler - checks handler of an opcode
- * @op - opcode to check
+ * @op: opcode to check
  *
  * Return: function pointer to handler function
  */
@@ -29,6 +29,7 @@ void (*check_handler(char *op))(stack_t **stack, unsigned int line_number)
  * execute_opcode - executes opcode based on function
  * @opcode: opcode to be executed
  * @stack: stack passed
+ * @line_number: current position at bytecode file
  *
  * Return: success value
  */

@@ -3,6 +3,7 @@
 /**
  * push - push item to stack
  * @stack: pointer to top of stack
+ * @line_number: current position at bytecode file
  */
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -48,6 +49,7 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *tmp = *stack;
+
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
