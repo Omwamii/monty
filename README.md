@@ -7,7 +7,7 @@ It relies on a unique stack, with specific instructions to manipulate it. The go
 
 	.main.c - Main function for the monty interpreter
 
-** Usage **
+**Usage**
 
 The program using gcc with the flags -Wall -Werror -Wextra -pedantic -std=c89 
 
