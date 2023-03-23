@@ -57,7 +57,7 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	if (*stack == NULL);
 	else
 	{
-		if (second == NULL);
+		if (second == NULL); /* only one element in stack */
 		else
 		{
 			while (tmp->next != NULL)
@@ -66,6 +66,32 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 			(*stack)->prev = tmp;
 			(*stack)->next = NULL;
 			*stack = second;
+		}
+	}
+}
+
+/**
+ * rotr - makes last element of the stack the top element
+ * @stack: ptr to top of stack
+ * @line_number: current file position
+ */
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (tmp == NULL);
+	else
+	{
+		if (tmp->next == NULL); /* only one element in stack */
+		else
+		{
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->prev->next = NULL;
+			tmp->prev = NULL;
+			tmp->next = *stack;
+			(*stack)->prev = tmp;
+			*stack = tmp;
 		}
 	}
 }
