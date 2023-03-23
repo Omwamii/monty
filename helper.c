@@ -65,14 +65,14 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number)
  * @stack: ptr to start of stack
  * @line_number: current file position
  */
-void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsigned int line_number)
-{
-	return;
-}
+void nop(__attribute__((unused)) stack_t **stack,
+		__attribute__((unused)) unsigned int line_number) {}
 
 /**
  * queue - implements queue opcode
  * @stack: ptr to head of stack
+ * @fp: file pointer
+ * @line_number: current file position
  */
 void queue(stack_t **stack, FILE *fp, unsigned int line_number)
 {

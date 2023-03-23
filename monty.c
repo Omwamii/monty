@@ -7,13 +7,13 @@
  *
  * Return: success value
  */
-stack_t *stack = NULL;
 int main(int argc, char **argv)
 {
 	FILE *fp;
 	char *buffer, *opcode = NULL;
 	size_t line_len = 0;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{

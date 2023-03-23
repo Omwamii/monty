@@ -54,10 +54,12 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *second = (*stack)->next;
 	stack_t *tmp = *stack;
 
-	if (*stack == NULL);
+	if (*stack == NULL)
+		;
 	else
 	{
-		if (second == NULL); /* only one element in stack */
+		if (second == NULL)
+			; /* only one element in stack */
 		else
 		{
 			while (tmp->next != NULL)
@@ -79,10 +81,12 @@ void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 
-	if (tmp == NULL);
+	if (tmp == NULL)
+		;
 	else
 	{
-		if (tmp->next == NULL); /* only one element in stack */
+		if (tmp->next == NULL)
+			; /* only one element in stack */
 		else
 		{
 			while (tmp->next != NULL)

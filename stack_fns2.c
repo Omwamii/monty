@@ -39,7 +39,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divide second top element by top element of the stack
+ * divide - divide second top element by top element of the stack
  * @stack: ptr to top element
  * @line_number: current file position
  */
