@@ -33,6 +33,10 @@ int main(int argc, char **argv)
 		opcode = strtok(buffer, " \n");
 		if (!opcode || *opcode == '#') /* comments & blanks */
 			continue;
+		if (strcmp(opcode, "stack") == 0)
+			continue;
+		if (strcmp(opcode, "queue") == 0)
+			queue(&stack, fp, line_number);
 		else
 			execute_opcode(opcode, &stack, line_number);
 	}

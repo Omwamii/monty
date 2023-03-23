@@ -69,3 +69,70 @@ void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused)) unsign
 {
 	return;
 }
+
+/**
+ * queue - implements queue opcode
+ * @stack: ptr to head of stack
+ */
+void queue(stack_t **stack, FILE *fp, unsigned int line_number)
+{
+	char *opcode, *buffer;
+	size_t line_len = 0;
+
+	while (getline(&buffer, &line_len, fp) != -1)
+	{
+		line_number++;
+		opcode = strtok(buffer, " \n");
+		if (!opcode || *opcode == '#')
+			continue;
+		if (strcmp(opcode, "stack") == 0)
+			break;
+		if (strcmp(opcode, "push") == 0)
+			push_queue(stack, line_number);
+		else
+			execute_opcode(opcode, stack, line_number);
+	}
+	free(buffer);
+}
+
+/**
+ * push_queue - push item to queue
+ * @stack: pointer to head of stack
+ * @line_number: current file position
+ */
+void push_queue(stack_t **stack, unsigned int line_number)
+{
+	stack_t *newnode, *tmp = *stack;
+	int item;
+	char *arg = strtok(NULL, " \n");
+
+	item = atoi(arg);
+	if (item == 0 && (strcmp(arg, "0") != 0))
+	{
+		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	newnode = malloc(sizeof(stack_t));
+	if (newnode == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	newnode->n = item;
+	if (*stack == NULL) /* empty queue */
+	{
+		newnode->prev = NULL;
+		newnode->next = NULL;
+		*stack = newnode;
+	}
+	else
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = newnode; /* insert at end */
+		newnode->next = NULL;
+		newnode->prev = tmp;
+	}
+}
