@@ -43,3 +43,29 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 		printf("\n");
 	}
 }
+
+/**
+ * rotl - makes top element becomes last and second top element becomes first
+ * @stack: ptr to top of stack
+ * @line_number: current file position
+ */
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *second = (*stack)->next;
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL);
+	else
+	{
+		if (second == NULL);
+		else
+		{
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->next = *stack;
+			(*stack)->prev = tmp;
+			(*stack)->next = NULL;
+			*stack = second;
+		}
+	}
+}
