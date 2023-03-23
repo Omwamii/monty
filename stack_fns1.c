@@ -10,9 +10,14 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *newnode;
 	int item;
 	char *arg = strtok(NULL, " \n");
+	if (arg == NULL)
+	{
+		 fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		 exit(EXIT_FAILURE);
+	}
 
 	item = atoi(arg);
-	if (item == 0 && (strcmp(arg, "0") != 0))
+	if (item == 0 && strcmp(arg, "0") != 0)
 	{
 		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
