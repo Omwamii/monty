@@ -53,7 +53,7 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number)
 	f = check_handler(opcode);
 	if (f == NULL)
 	{
-		fprintf(stderr, "L<%u>: unknown instruction <%s>\n", line_number, opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 
@@ -108,13 +108,13 @@ void push_queue(stack_t **stack, unsigned int line_number)
 
 	if (arg == NULL)
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	item = atoi(arg);
 	if (item == 0 && (strcmp(arg, "0") != 0))
 	{
-		fprintf(stderr, "L<%u>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

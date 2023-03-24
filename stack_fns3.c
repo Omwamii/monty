@@ -11,12 +11,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	if (top == NULL)
 	{
-		fprintf(stderr, "L<%u>: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (top->n < 0 || top->n > 127)
 	{
-		fprintf(stderr, "L<%u>: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", top->n);
