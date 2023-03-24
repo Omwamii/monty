@@ -51,13 +51,14 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  */
 void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *second = (*stack)->next;
-	stack_t *tmp = *stack;
+	stack_t *second, *tmp;
 
 	if (*stack == NULL)
 		;
 	else
 	{
+		second = (*stack)->next;
+		tmp = *stack;
 		if (second == NULL)
 			; /* only one element in stack */
 		else
