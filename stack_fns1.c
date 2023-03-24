@@ -8,7 +8,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode;
-	int item;
+	int item, val;
 	char *arg = strtok(NULL, " \n");
 
 	if (arg == NULL)
@@ -17,13 +17,14 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	item = atoi(arg);
-	if (item == 0 && strcmp(arg, "0") != 0)
+	val = check_ascii(arg);
+	if (val == -1)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
+	item = atoi(arg);
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
