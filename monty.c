@@ -1,5 +1,6 @@
 #include "monty.h"
 
+stack_t *stack = NULL;
 /**
  * main - entry point
  * @argc: args count
@@ -7,7 +8,7 @@
  *
  * Return: success value
  */
-stack_t *stack = NULL;
+
 int main(int argc, char **argv)
 {
 	FILE *fp;
