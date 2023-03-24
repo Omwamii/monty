@@ -76,7 +76,7 @@ void nop(__attribute__((unused)) stack_t **stack,
  */
 void queue(stack_t **stack, FILE *fp, unsigned int line_number)
 {
-	char *opcode, *buffer;
+	char *opcode = NULL, *buffer = NULL;
 	size_t line_len = 0;
 
 	while (getline(&buffer, &line_len, fp) != -1)
@@ -102,7 +102,7 @@ void queue(stack_t **stack, FILE *fp, unsigned int line_number)
  */
 void push_queue(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newnode, *tmp = *stack;
+	stack_t *newnode = NULL, *tmp = *stack;
 	int item;
 	char *arg = strtok(NULL, " \n");
 
